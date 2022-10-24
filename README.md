@@ -15,6 +15,7 @@
   - [Objetivos](#objetivos)
   - [Introducción](#introducción)
   - [Actividades de la práctica](#actividades-de-la-práctica)
+    - [0: Descargar el proyecto y probar las funcionalidades](#0-descargar-el-proyecto-y-probar-las-funcionalidades)
     - [1. Lista de la compra](#1-lista-de-la-compra)
     - [2. Ordenación de la lista de la compra](#2-ordenación-de-la-lista-de-la-compra)
     - [3. Menú de selección](#3-menú-de-selección)
@@ -64,7 +65,6 @@ Las líneas introducidas por el usuario son las que empiezan con "`>>>`" o "`...
 <img src="./img/python-repl-vertical.png" align=right width=100px>
 
 ```pycon
-Esto es código python
 >>> a = 2
 >>> for i in range(a):
 ...     print(i)
@@ -82,7 +82,7 @@ def funcion(parametro):
    return
 ```
 
-También utilizaremos notas para resaltar consejos o aspectos importantes:
+También utilizaremos etiquetas para resaltar consejos o aspectos importantes sobre ese producto:
 
 _**Nota**: todas las líneas ejecutadas durante una sesión de python o de consola se guardan en el historial. Se puede acceder a una línea anterior mediante las flechas del teclado o pulsando `Ctrl+P` repetidamente hasta llegar a la línea deseada._
 
@@ -99,6 +99,10 @@ _**Nota**: todas las líneas ejecutadas durante una sesión de python o de conso
 El objetivo de esta práctica es desarrollar un gestor de la lista de la compra que nos permita tener una lista de productos que queremos comprar.
 
 En la primera práctica se desarrolló una versión inicial muy simple de este gestor. Esta práctica consistirá en la ampliación del gestor de la lista de la compra con varias funciones.
+
+## Actividades de la práctica
+
+### 0: Descargar el proyecto y probar las funcionalidades
 
 El primer paso para desarrollar la práctica es descargar los ficheros necesarios del repositorio de Github. El método más sencillo es a través del botón `Code->Download ZIP`. Los dos ficheros necesarios para la práctica son `listadelacompra.py` y `test.py`.
 Las funciones desarrolladas deben estar contenidas en el fichero python con el nombre `listadelacompra.py` (que será el fichero que se debe entregar en Moodle). Este fichero se puede descargar del repositorio Github de la práctica, y contiene la cabecera de las funciones a desarrollar, así como la declaración de la lista `productos`. Además, importa la función `literal_eval`, que nos será útil para la el desarrollo del tercer ejercico (el menú de selección).
@@ -120,25 +124,31 @@ NotImplementedError
 
 La otra opción, es mediante el fichero `test.py`. Este fichero se puede usar opcionalmente para comprobar que las funciones desarrolladas en la práctica funcionan correctamente, como veremos más adelante.
 
-## Actividades de la práctica
-
 ### 1. Lista de la compra
 
-El gestor de lista de la compra que definimos en la práctica anterior permitía productos con un formato muy sencillo: únicamente un título. En esta práctica, vamos a ampliarlo para representar cada producto como una lista con cuatro elementos:
+El gestor de lista de la compra que definimos en la práctica anterior permitía productos con un formato muy sencillo: únicamente un título. 
+En esta práctica, vamos a ampliarlo para representar cada producto como un diccionario con los siguientes elementos:
 
-- nombre del producto (como en la práctica anterior)
-- prioridad (entero), que indica en un rango de 1 a 5 la urgencia con la que comprar este producto, siendo 1 muy poco urgente y 5 muy urgente
-- precio del producto
-- tupla con posibles recetas o usos que se les pueda dar al producto
-- categoría del producto
-- comprado (booleano) que indica si el producto ha sido comprado o no
+- `nombre` del producto (como en la práctica anterior)
+- `precio` del producto
+- `prioridad` (entero), que indica en un rango de 1 a 5 la urgencia con la que comprar este producto, siendo 1 muy poco urgente y 5 muy urgente
+- `etiquetas` tupla con posibles etiquetas que se les pueda dar al producto (p.e., etiquetas, subcategorías, etc.)
+- `categoria`, categoría  del producto
+- `comprado` (booleano) que indica si el producto ha sido comprado o no
 
 Un posible ejemplo de producto sería:
 
 <img src="./img/python.png" align=right width=100px>
 
 ```python
-producto = ['Arroz integral', 0.72, 'Alimentación', ('risotto', 'arroz a la cubana'), 3, False]
+producto = {
+  "nombre": "Arroz integral",
+  "precio": 0.72,
+  "categoría": "Alimentación",
+  "etiquetas": ("risotto", "arroz a la cubana"),
+  "prioridad": 3,
+  "comprado": False
+}
 ```
 
 Las funciones a implementar para el gestor de la lista de la compra serían las siguientes:
@@ -146,7 +156,7 @@ Las funciones a implementar para el gestor de la lista de la compra serían las 
 <img src="./img/python.png" align=right width=100px>
 
 ```python
-def insertar(nombre, precio, categoria, notas=(), prioridad=3):
+def insertar(nombre, precio, categoria, etiquetas=(), prioridad=3):
   '''Añade un producto nuevo a la lista con los parámetros dados'''
   raise NotImplementedError
 
@@ -166,24 +176,22 @@ def listar_productos():
   '''Devuelve la lista de los productos'''
   raise NotImplementedError
 
-  def mostrar_productos(comprados=True, usos=(), categorias=[]):
+  def mostrar_productos(comprados=True, etiquetas=(), categorias=[]):
   '''
   Muestra por pantalla todos los productos con su información. Si un producto ya ha sido comprado, se marca con una x al comienzo.
   La prioridad se indicará mediante el uso de asteriscos (*), es decir, un artículo con prioridad 5 se representará mediante cinco asteriscos (*****).
   Si comprados es False, no se muestran los productos ya comprados.
-  Usos es una tupla o lista con notas o aclaraciones. Si está vacía, se muestran
-  todos los productos. Si contiene alguna nota, sólo se muestran los productos
-  que tengan todas las notas proporcionadas.
-  Categorias es una lista con las categorías que se quieren obtener. Si está vacía, se muestran
-  todos los productos. Si contiene alguna categoría, solo se muestran los productos cuya categoría
-  esté contenida en la lista.
+  etiquetas es una tupla o lista con etiquetas o aclaraciones.
+  Si está vacía, se muestran todos los productos. Si contiene alguna etiqueta, sólo se muestran los productos que tengan todas las etiquetas proporcionadas.
+   Categorias es una lista con las categorías que se quieren obtener. Si está vacía, se muestran todos los productos. Si contiene alguna categoría, solo se muestran los productos cuya categoría esté contenida en la lista.
+
   Ejemplo en que sólo un producto ha sido comprado:
   >>> mostrar_productos()
   [x] Alimentación - Arroz integral - *** - 0.72 € - #risotto #arroz a la cubana
   [ ] Alimentación - Huevos - * - 1.20 € - #arroz a la cubana #tortilla 
   [ ] Cosméticos - Desmaquillante - ***** - 4.50 € - #fiesta #teatro
 
-  >>> mostrar_productos(usos=('arroz a la cubana'))
+  >>> mostrar_productos(etiquetas=('arroz a la cubana'))
   [x] Alimentación - Arroz integral - *** - 0.72 € - #risotto #arroz a la cubana
   [ ] Alimentación - Huevos - * - 1.20 € - #arroz a la cubana #tortilla
   '''
@@ -192,16 +200,17 @@ raise NotImplementedError
 
 En cada uno de estos casos, habrá que sustituir la lı́nea `raise NotImplementedError` por el código necesario para cumplir la funcionalidad.
 
-_**Nota:** en temas posteriores, veremos formas más eficientes de representar información mediante la definición de clases._
+_**Nota:** en temas posteriores, veremos formas más eficientes de representar información mediante la definición de clases. Otra opción para representar tareas podría ser utilizar una tupla especial con nombres para cada posición (namedtuple <sup>[1](#namedtuple)</sup>)_
 
 ### 2. Ordenación de la lista de la compra
 
-Cuando la lista de la compra es grande, es interesante que se muestren en un orden especı́fico, y no sólo por
-orden de inserción. Para ello, vamos a utilizar un algoritmo de ordenación conocido como Insertion Sort<sup>[1](#insertion_sort)</sup>, que
-comparará la prioridad de cada artículo y los colocará en el orden adecuado.
+Cuando la lista de la compra es grande, es interesante que se muestren en un orden especı́fico, y no sólo por orden de inserción.
+Para ello, vamos a utilizar un algoritmo de ordenación conocido como Insertion Sort<sup>[2](#insertion_sort)</sup>, que comparará la prioridad de cada artículo y los colocará en el orden adecuado.
 El criterio de ordenación será el siguiente: una producto ha de aparecer antes que otro si su prioridad es mayor, o si el primer producto no ha sido comprado y el segundo sí.
 
-El funcionamiento de Insertion Sort es muy sencillo: consiste en ir cogiendo uno por uno los elementos de una lista y moverlos a su posición correspondiente con respecto a los anteriormente ordenados. Así, empieza con el segundo elemento y lo ordena con respecto al primero. Luego sigue con el tercero y lo coloca en su posición ordenada con respecto a los dos anteriores, y así sucesivamente hasta recorrer todas las posiciones de la lista.
+El funcionamiento de Insertion Sort es muy sencillo: consiste en ir cogiendo uno por uno los elementos de una lista y moverlos a su posición correspondiente con respecto a los anteriormente ordenados.
+Así, empieza con el segundo elemento y lo ordena con respecto al primero.
+Luego sigue con el tercero y lo coloca en su posición ordenada con respecto a los dos anteriores, y así sucesivamente hasta recorrer todas las posiciones de la lista.
 
 <img src="./img/python.png" align=right width=100px>
 
@@ -213,14 +222,13 @@ def ordenar():
 
 ### 3. Menú de selección
 
-En la práctica anterior creamos un menú interactivo utilizando varias sentencias de control. En esta
-práctica, simplificaremos esta implementación mediante un diccionario. Esto nos permitirá además añadir
-fácilmente una función de ayuda, que mostrará todos los comandos disponibles y la documentación de la
-función python que se usa en el comando.
+En la práctica anterior creamos un menú interactivo utilizando varias sentencias de control.
+En esta práctica, simplificaremos esta implementación mediante un diccionario.
+Esto nos permitirá además añadir fácilmente una función de ayuda, que mostrará todos los comandos disponibles y la documentación de la función python que se usa en el comando.
 En particular, implementaremos los siguientes comandos:
 
 -  `mostrar`
--  `insertar <nombre>; <precio>; <categoria>; <notas en formato tupla separadas por comas>; <prioridad>`
+-  `insertar <nombre>; <precio>; <categoria>; <etiquetas en formato tupla separadas por comas>; <prioridad>`
 -  `borrar <indice>`
 -  `precio <numero>; <precio>`
 -  `comprado <numero>`
@@ -231,20 +239,21 @@ Los cinco primeros comandos harán uso de las funciones definidas anteriormente.
 
 Para implementar este menú, usaremos un diccionario de comandos a funciones, como el siguiente:
 
-```
+<img src="./img/python.png" align=right width=100px>
+
+```python
 {
-"mostrar": mostrar_productos,
-"insertar": insertar,
-"borrar": borrar,
-"ordenar": ordenar,
-"actualizar": actualizar_precio,
-"comprado": cambiar_estado,
+  "mostrar": mostrar_productos,
+  "insertar": insertar,
+  "borrar": borrar,
+  "ordenar": ordenar,
+  "actualizar": actualizar_precio,
+  "comprado": cambiar_estado,
 }
 ```
 
-Cada vez que el usuario lance un comando, el menú comprobará si hay una acción definida y, de ser
-ası́, la lanzará con los argumentos proporcionados. En caso de insertar un comando no reconocido, el menú
-mostrará un texto de ayuda, que incluirá todas las acciones definidas junto con su documentación.
+Cada vez que el usuario lance un comando, el menú comprobará si hay una acción definida y, de ser ası́, la lanzará con los argumentos proporcionados.
+En caso de insertar un comando no reconocido, el menú mostrará un texto de ayuda, que incluirá todas las acciones definidas junto con su documentación.
 La documentación de una función se puede obtener de la siguiente manera:
 
 <img src="./img/python-repl-vertical.png" align=right width=100px>
@@ -253,14 +262,14 @@ La documentación de una función se puede obtener de la siguiente manera:
 >>> mostrar_productos.__doc__.strip()
 ```
 
-Por último, podemos ver que no todas las funciones tienen el mismo número de parámetros. Afortunadamente, Python permite lanzar una función con una serie de argumentos contenidos en una lista. Para ello
-sólo tenemos que utilizar un asterisco antes de la lista que contiene los parámetros. Por ejemplo, el siguiente
-código:
+Por último, podemos ver que no todas las funciones tienen el mismo número de parámetros.
+Afortunadamente, Python permite lanzar una función con una serie de argumentos contenidos en una lista.
+Para ello sólo tenemos que utilizar un asterisco antes de la lista que contiene los parámetros. Por ejemplo, el siguiente código:
 
 <img src="./img/python-repl-vertical.png" align=right width=100px>
 
 ```pycon
->>> args = ['Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 3]
+>>> args = ['Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 3, False]
 >>> insertar(*args)
 ```
 
@@ -269,7 +278,7 @@ es equivalente a:
 <img src="./img/python.png" align=right width=100px>
 
 ```python
-insertar('Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 3)
+insertar('Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 3, False)
 ```
 
 Por lo tanto, algunos posibles ejemplos del uso de este menú serían:
@@ -287,7 +296,10 @@ Por lo tanto, algunos posibles ejemplos del uso de este menú serían:
 [ ] Alimentación - Hierbabuena - * - 1.5 € - #cocktails
 ```
 
-_**Nota:**: Los argumentos de los comandos son cadenas de texto. En algunos de los comandos (insertar, comprado o actualizar), será necesario convertirlos a enteros, float o tupla. La forma más fácil de pasar a formato numérico en nuestro caso es utilizar `numero = int(numero)` o `numero = float(numero)` dentro de la función que corresponda. Para convertir un string que representa una tupla, en una tupla, podemos usar la función `literal_eval` de la biblioteca `ast`<sup>[2](#ast)</sup>._
+_**Nota:**: Los argumentos de los comandos son cadenas de texto.
+En algunos de los comandos (insertar, comprado o actualizar), será necesario convertirlos a enteros, float o tupla.
+La forma más fácil de pasar a formato numérico en nuestro caso es utilizar `numero = int(numero)` o `numero = float(numero)` dentro de la función que corresponda.
+Para convertir un string que representa una tupla, en una tupla, podemos usar la función `literal_eval` de la biblioteca `ast`<sup>[3](#ast)</sup>._
 
 ### 4. Tareas opcionales
 
@@ -295,18 +307,20 @@ Como hemos dicho, hemos realizado una gestión muy básica de la lista de la com
 libremente las siguientes tareas para mejorar en el manejo de Python y obtener una gestión de lista de la compra más
 útil:
 
-- Permitir varias listas de la compra. Todo el código realizado depende de la variable `productos` en el módulo. Esta es una mala práctica con varias desventajas, pero la principal es que no nos permite tener más de una lista de productos. Se propone modificar el código para eliminar la variable `productos` y que todas las funciones reciban la lista de productos como argumento.
-- Modificar el menú para que los argumentos se pidan uno a uno de manera interactiva, en lugar de
-escribirlos con separadores en la misma lı́nea.
-- Mostrar el ı́ndice de cada producto. Borrar o cambiar un producto requiere saber el ı́ndice del producto en
-la lista. Serı́a útil que se mostrara el ı́ndice de cada producto junto con el resto de información. Existen
-varios enfoques para lograrlo. Una opción es incluir el ı́ndice en el producto, igual que hemos hecho con el
-resto de información, pero eso requiere modificar muchas partes del código. Una opción más elegante
-es usar la función `enumerate`, que además permite recorrer una lista (cualquier iterable) y devuelve
-uno a uno los elementos y su ı́ndice.
+- Permitir varias listas de la compra.
+Todo el código realizado depende de la variable `productos` en el módulo.
+Esta es una mala práctica con varias desventajas, pero la principal es que no nos permite tener más de una lista de productos.
+Se propone modificar el código para eliminar la variable `productos` y que todas las funciones reciban la lista de productos como argumento.
+- Modificar el menú para que los argumentos se pidan uno a uno de manera interactiva, en lugar de escribirlos con separadores en la misma lı́nea.
+ - Mostrar el ı́ndice de cada producto. Borrar o cambiar un producto requiere saber el ı́ndice del producto en la lista.
+ Serı́a útil que se mostrara el ı́ndice de cada producto junto con el resto de información.
+ Existen varios enfoques para lograrlo.
+ Una opción es incluir el ı́ndice en el producto, igual que hemos hecho con el resto de información, pero eso requiere modificar muchas partes del código.
+ Una opción más elegante es usar la función `enumerate`, que además permite recorrer una lista (cualquier iterable) y devuelve uno a uno los elementos y su ı́ndice.
 - Añadir una función que permita borrar o modificar productos por nombre en vez de por índice.
 
 ## Evaluación
+
 En esta tarea se incluye un fichero de pruebas llamado `test.py`.
 Su uso es opcional, pero muy recomendado, ya que permite comprobar de una manera estructurada si las funcionalidades pedidas se han implementado. Para que las pruebas se ejecuten correctamente, el fichero de la solución debe tener el nombre `listadelacompra.py` y estar alojado en la misma carpeta que el fichero de pruebas `test.py`.
 
@@ -355,10 +369,11 @@ FAILED (failures=2)
 ## Entrega de la práctica
 
 
-Para entregar la práctica, se deberá subir a Moodle en <a href="https://moodle.upm.es/titulaciones/oficiales/mod/assign/view.php?id=208688">este enlace</a> el fichero `listadelacompra.py`, conteniendo todas las funciones requeridas en la práctica. La práctica se estar entregada en Moodle antes de las 23:59 del **12 de Noviembre de 2021**.
-
+Para entregar la práctica, se deberá subir a Moodle en la tarea llamada "Entrega del proyecto 2" el fichero `listadelacompra.py`.
+Este fichero debe contener todas las funciones requeridas en la práctica.
 </br>
 
 ## Enlaces
-<a name="insertion_sort">1</a>: https://en.wikipedia.org/wiki/Insertion_sort </br>
+<a hame="namedtuple">1</a> https://docs.python.org/3/library/collections.html </br>
+<a name="insertion_sort">2</a>: https://en.wikipedia.org/wiki/Insertion_sort </br>
 <a name="ast">2</a>: https://docs.python.org/3/library/ast.html </br>

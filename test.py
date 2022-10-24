@@ -37,7 +37,7 @@ class TestProductos(unittest.TestCase):
         productos.clear()
 
     def test_insertar(self):
-        # nombre, precio, categoria, notas=(), prioridad=3
+        # nombre, precio, categoria, etiquetas=(), prioridad=3
         insertar('Arroz integral', 0.72, 'Alimentación', ('risotto', 'arroz a la cubana'))
         insertar('Huevos', 1.20, 'Alimentación', ('arroz a la cubana', 'tortilla'), 1)
         insertar('Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 5)
@@ -49,9 +49,7 @@ class TestProductos(unittest.TestCase):
         cambiar_estado(1)
         assert len(productos) == 2
         for t in productos:
-            comprado = t[-1]
-            nombre = t[0]
-            assert (nombre == 'Huevos') == comprado
+            assert (t["nombre"] == 'Huevos') == t["comprado"]
     
     def test_precio(self):
         insertar('Arroz integral', 0.72, 'Alimentación', ('risotto', 'arroz a la cubana'))
@@ -59,9 +57,7 @@ class TestProductos(unittest.TestCase):
         actualizar_precio(0, 1.5)
         assert len(productos) == 2
         for t in productos:
-            precio = t[1]
-            nombre = t[0]
-            assert (precio == 1.5) == (nombre == 'Arroz integral')
+            assert (t["precio"] == 1.5) == (t["nombre"] == 'Arroz integral')
 
 
     def test_ordenar(self):
@@ -69,14 +65,14 @@ class TestProductos(unittest.TestCase):
         insertar('Huevos', 1.20, 'Alimentación', ('arroz a la cubana', 'tortilla'), 1)
         insertar('Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 5)
         ordenar()
-        assert productos[0][0] == 'Desmaquillante'
-        assert productos[1][0] == 'Arroz integral'
-        assert productos[2][0] == 'Huevos'
+        assert productos[0]["nombre"] == 'Desmaquillante'
+        assert productos[1]["nombre"] == 'Arroz integral'
+        assert productos[2]["nombre"] == 'Huevos'
         cambiar_estado(2)
         ordenar()
-        assert productos[1][0] == 'Desmaquillante'
-        assert productos[2][0] == 'Arroz integral'
-        assert productos[0][0] == 'Huevos'
+        assert productos[1]["nombre"] == 'Desmaquillante'
+        assert productos[2]["nombre"] == 'Arroz integral'
+        assert productos[0]["nombre"] == 'Huevos'
 
     def test_mostrar(self):
         insertar('Arroz integral', 0.72, 'Alimentación', ('risotto', 'arroz a la cubana'))
@@ -114,12 +110,12 @@ class TestProductos(unittest.TestCase):
 
         assert 'Desmaquillante' not in v
 
-    def test_mostrar_notas(self):
+    def test_mostrar_etiquetas(self):
         insertar('Arroz integral', 0.72, 'Alimentación', ('risotto', 'arroz a la cubana'))
         insertar('Huevos', 1.20, 'Alimentación', ('arroz a la cubana', 'tortilla'), 1)
         insertar('Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 5)
 
-        v = red(mostrar_productos, usos=('arroz a la cubana',))
+        v = red(mostrar_productos, etiquetas=('arroz a la cubana',))
         assert 'Huevos' in v
         assert 'Arroz integral' in v
 
