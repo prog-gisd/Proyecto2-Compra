@@ -133,7 +133,7 @@ En esta práctica, vamos a ampliarlo para representar cada producto como un dicc
 - `precio` del producto
 - `prioridad` (entero), que indica en un rango de 1 a 5 la urgencia con la que comprar este producto, siendo 1 muy poco urgente y 5 muy urgente
 - `etiquetas` tupla con posibles etiquetas que se les pueda dar al producto (p.e., etiquetas, subcategorías, etc.)
-- `categoria`, categoría  del producto
+- `categoría`, categoría  del producto (puede usarse la palabra con o sin tilde, ya que no se comprueba en los tests)
 - `comprado` (booleano) que indica si el producto ha sido comprado o no
 
 Un posible ejemplo de producto sería:
@@ -176,7 +176,7 @@ def listar_productos():
   '''Devuelve la lista de los productos'''
   raise NotImplementedError
 
-  def mostrar_productos(comprados=True, etiquetas=(), categorias=[]):
+def mostrar_productos(comprados=True, etiquetas=(), categorias=[]):
   '''
   Muestra por pantalla todos los productos con su información. Si un producto ya ha sido comprado, se marca con una x al comienzo.
   La prioridad se indicará mediante el uso de asteriscos (*), es decir, un artículo con prioridad 5 se representará mediante cinco asteriscos (*****).
