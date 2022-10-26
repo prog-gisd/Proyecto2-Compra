@@ -105,7 +105,7 @@ En la primera práctica se desarrolló una versión inicial muy simple de este g
 ### 0: Descargar el proyecto y probar las funcionalidades
 
 El primer paso para desarrollar la práctica es descargar los ficheros necesarios del repositorio de Github. El método más sencillo es a través del botón `Code->Download ZIP`. Los dos ficheros necesarios para la práctica son `listadelacompra.py` y `test.py`.
-Las funciones desarrolladas deben estar contenidas en el fichero python con el nombre `listadelacompra.py` (que será el fichero que se debe entregar en Moodle). Este fichero se puede descargar del repositorio Github de la práctica, y contiene la cabecera de las funciones a desarrollar, así como la declaración de la lista `productos`. Además, importa la función `literal_eval`, que nos será útil para la el desarrollo del tercer ejercico (el menú de selección).
+Las funciones desarrolladas deben estar contenidas en el fichero python con el nombre `listadelacompra.py` (que será el fichero que se debe entregar en Moodle). Este fichero se puede descargar del repositorio Github de la práctica, y contiene la cabecera de las funciones a desarrollar, así como la declaración de la lista `productos`.
 
 Para su edición, se puede usar cualquier IDE, aunque se recomienda Visual Studio Code. Para comprobar las soluciones, se proponen dos opciones. Por un lado, el fichero de plantilla incluye una
 función, `prueba_manual`, que ejecuta una serie de instrucciones para probar la funcionalidad. Este es un ejemplo de la salida cuando no se ha implementado ninguna función:
@@ -228,7 +228,7 @@ Esto nos permitirá además añadir fácilmente una función de ayuda, que mostr
 En particular, implementaremos los siguientes comandos:
 
 -  `mostrar`
--  `insertar <nombre>; <precio>; <categoria>; <etiquetas en formato tupla separadas por comas>; <prioridad>`
+-  `insertar <nombre>; <precio>; <categoria>; <etiquetas separadas por comas>; <prioridad>`
 -  `borrar <indice>`
 -  `precio <numero>; <precio>`
 -  `comprado <numero>`
@@ -285,8 +285,8 @@ Por lo tanto, algunos posibles ejemplos del uso de este menú serían:
 
 ```
 -> mostrar
--> insertar Garbanzos; 0.68; Alimentación; ('cocido', 'hummus'); 3
--> insertar Hierbabuena; 1.5; Alimentación; ('cocktails',);  1
+-> insertar Garbanzos; 0.68; Alimentación; cocido,hummus; 3
+-> insertar Hierbabuena; 1.5; Alimentación; cocktails;  1
 -> mostrar
 [ ] Alimentación - Garbanzos - *** - 0.68 € - #cocido #hummus
 [ ] Alimentación - Hierbabuena - * - 1.5 € - #cocktails
@@ -299,7 +299,7 @@ Por lo tanto, algunos posibles ejemplos del uso de este menú serían:
 _**Nota:**: Los argumentos de los comandos son cadenas de texto.
 En algunos de los comandos (insertar, comprado o actualizar), será necesario convertirlos a enteros, float o tupla.
 La forma más fácil de pasar a formato numérico en nuestro caso es utilizar `numero = int(numero)` o `numero = float(numero)` dentro de la función que corresponda.
-Para convertir un string que representa una tupla, en una tupla, podemos usar la función `literal_eval` de la biblioteca `ast`<sup>[3](#ast)</sup>._
+En el caso de las tuplas, lo que haremos será detectar si la entrada es una cadena de texto, y en ese caso separaremos por comas.
 
 ### 4. Tareas opcionales
 
@@ -376,4 +376,3 @@ Este fichero debe contener todas las funciones requeridas en la práctica.
 ## Enlaces
 <a hame="namedtuple">1</a> https://docs.python.org/3/library/collections.html </br>
 <a name="insertion_sort">2</a>: https://en.wikipedia.org/wiki/Insertion_sort </br>
-<a name="ast">2</a>: https://docs.python.org/3/library/ast.html </br>

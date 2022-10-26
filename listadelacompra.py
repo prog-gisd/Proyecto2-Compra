@@ -1,5 +1,3 @@
-from ast import literal_eval
-
 '''
 Módulo de gestión la lista de la compra
 
@@ -71,7 +69,7 @@ def menu():
     Acciones:
 
     -  mostrar
-    -  insertar <nombre>; <precio>; <categoria>; <etiquetas en formato tupla separadas por comas>; <prioridad>
+    -  insertar <nombre>; <precio>; <categoria>; <etiquetas separadas por comas>; <prioridad>
     -  borrar <indice>
     -  precio <numero>; <precio>
     -  comprado <numero>
