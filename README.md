@@ -2,40 +2,40 @@
 
 <br/><br/>
 
-# Práctica 2 - Lista de la compra
+# Proyecto 2 - Lista de la compra
 
 
 ## Contenido
 
-- [Práctica 2 - Lista de la compra](#práctica-2---lista-de-la-compra)
+- [Proyecto 2 - Lista de la compra](#proyecto-2---lista-de-la-compra)
   - [Contenido](#contenido)
   - [Requisitos previos](#requisitos-previos)
-  - [Temas relacionados con la práctica](#temas-relacionados-con-la-práctica)
+  - [Temas relacionados con el proyecto](#temas-relacionados-con-el-proyecto)
   - [Convenciones](#convenciones)
   - [Objetivos](#objetivos)
   - [Introducción](#introducción)
-  - [Actividades de la práctica](#actividades-de-la-práctica)
+  - [Actividades del proyecto](#actividades-del-proyecto)
     - [0: Descargar el proyecto y probar las funcionalidades](#0-descargar-el-proyecto-y-probar-las-funcionalidades)
     - [1. Lista de la compra](#1-lista-de-la-compra)
     - [2. Ordenación de la lista de la compra](#2-ordenación-de-la-lista-de-la-compra)
     - [3. Menú de selección](#3-menú-de-selección)
     - [4. Tareas opcionales](#4-tareas-opcionales)
   - [Evaluación](#evaluación)
-  - [Entrega de la práctica](#entrega-de-la-práctica)
+  - [Entrega del proyecto](#entrega-del-proyecto)
   - [Enlaces](#enlaces)
 
 ## Requisitos previos
 
-Disponer de una versión de Python igual o superior a 3.8, y del entorno de desarrollo Visual Studio Code.
+Disponer de una versión de Python igual o superior a 3.10, y del entorno de desarrollo Visual Studio Code.
 
-## Temas relacionados con la práctica
+## Temas relacionados con el proyecto
 
 En la realización de este proyecto se ponen en práctica conceptos de los temas 1, 2, 3, 4, 5 y 6 de la asignatura. Además, se
 utilizarán tangencialmente algunos elementos de temas posteriores.
 
 ## Convenciones
 
-Durante la práctica se utilizarán tres tipos de código. Por un lado, código a escribir en la línea de comandos
+Durante el proyecto se utilizarán tres tipos de código. Por un lado, código a escribir en la línea de comandos
 (_command line_), también conocida como terminal o consola. En el ejemplo de abajo, vemos cómo ejecutamos
 el comando `python --version`, que imprime por pantalla la versión de Python en el sistema.
 
@@ -43,7 +43,7 @@ el comando `python --version`, que imprime por pantalla la versión de Python en
 
 ```shell
 $ python --version
-Python 3.8.10
+Python 3.10.12
 ```
 
 Por otro lado, hay fragmentos de sesión del intérprete de comandos de python.
@@ -53,8 +53,7 @@ Podemos acceder al intérprete directamente ejecutando el comando Python en nues
 
 ```shell
 $ python
-Python 3.8.10 (default, Jun  2 2021, 10:49:15) 
-[GCC 9.4.0] on linux
+Python 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
@@ -96,16 +95,19 @@ _**Nota**: todas las líneas ejecutadas durante una sesión de python o de conso
 
 ## Introducción
 
-El objetivo de esta práctica es desarrollar un gestor de la lista de la compra que nos permita tener una lista de productos que queremos comprar.
+El objetivo de este proyecto es desarrollar un gestor de la lista de la compra que nos permita tener una lista de productos que queremos comprar.
 
-En la primera práctica se desarrolló una versión inicial muy simple de este gestor. Esta práctica consistirá en la ampliación del gestor de la lista de la compra con varias funciones.
+En el primer proyecto se desarrolló una versión inicial muy simple de este gestor.
+Este proyecto consistirá en la ampliación del gestor de la lista de la compra con varias funciones.
 
-## Actividades de la práctica
+## Actividades del proyecto
 
 ### 0: Descargar el proyecto y probar las funcionalidades
 
-El primer paso para desarrollar la práctica es descargar los ficheros necesarios del repositorio de Github. El método más sencillo es a través del botón `Code->Download ZIP`. Los dos ficheros necesarios para la práctica son `listadelacompra.py` y `test.py`.
-Las funciones desarrolladas deben estar contenidas en el fichero python con el nombre `listadelacompra.py` (que será el fichero que se debe entregar en Moodle). Este fichero se puede descargar del repositorio Github de la práctica, y contiene la cabecera de las funciones a desarrollar, así como la declaración de la lista `productos`.
+El primer paso para desarrollar el proyecto es descargar los ficheros necesarios del repositorio de Github.
+El método más sencillo es a través del botón `Code->Download ZIP`.
+Los dos ficheros necesarios para el proyecto son `listadelacompra.py` y `test.py`.
+Las funciones desarrolladas deben estar contenidas en el fichero python con el nombre `listadelacompra.py` (que será el fichero que se debe entregar en Moodle). Este fichero se puede descargar del repositorio Github del proyecto, y contiene la cabecera de las funciones a desarrollar, así como la declaración de la lista `productos`.
 
 Para su edición, se puede usar cualquier IDE, aunque se recomienda Visual Studio Code. Para comprobar las soluciones, se proponen dos opciones. Por un lado, el fichero de plantilla incluye una
 función, `prueba_manual`, que ejecuta una serie de instrucciones para probar la funcionalidad. Este es un ejemplo de la salida cuando no se ha implementado ninguna función:
@@ -122,18 +124,18 @@ Traceback (most recent call last):
 NotImplementedError
 ```
 
-La otra opción, es mediante el fichero `test.py`. Este fichero se puede usar opcionalmente para comprobar que las funciones desarrolladas en la práctica funcionan correctamente, como veremos más adelante.
+La otra opción, es mediante el fichero `test.py`. Este fichero se puede usar opcionalmente para comprobar que las funciones desarrolladas en el proyecto funcionan correctamente, como veremos más adelante.
 
 ### 1. Lista de la compra
 
-El gestor de lista de la compra que definimos en la práctica anterior permitía productos con un formato muy sencillo: únicamente un título. 
-En esta práctica, vamos a ampliarlo para representar cada producto como un diccionario con los siguientes elementos:
+El gestor de lista de la compra que definimos en el proyecto anterior permitía productos con un formato muy sencillo: únicamente un título. 
+En este proyecto, vamos a ampliarlo para representar cada producto como un diccionario con los siguientes elementos:
 
-- `nombre` del producto (como en la práctica anterior)
+- `nombre` del producto (como en el proyecto anterior)
 - `precio` del producto
-- `prioridad` (entero), que indica en un rango de 1 a 5 la urgencia con la que comprar este producto, siendo 1 muy poco urgente y 5 muy urgente
-- `etiquetas` tupla con posibles etiquetas que se les pueda dar al producto (p.e., etiquetas, subcategorías, etc.)
 - `categoría`, categoría  del producto (puede usarse la palabra con o sin tilde, ya que no se comprueba en los tests)
+- `etiquetas` tupla con posibles etiquetas que se les pueda dar al producto (p.e., etiquetas, subcategorías, etc.)
+- `prioridad` (entero), que indica en un rango de 1 a 5 la urgencia con la que comprar este producto, siendo 1 muy poco urgente y 5 muy urgente
 - `comprado` (booleano) que indica si el producto ha sido comprado o no
 
 Un posible ejemplo de producto sería:
@@ -156,57 +158,78 @@ Las funciones a implementar para el gestor de la lista de la compra serían las 
 <img src="./img/python.png" align=right width=100px>
 
 ```python
-def insertar(nombre, precio, categoria, etiquetas=(), prioridad=3):
-  '''Añade un producto nuevo a la lista con los parámetros dados'''
-  raise NotImplementedError
 
-def borrar(indice):
-  '''Borra de la lista el producto que se encuentra en la posición indicada'''
-  raise NotImplementedError
+productos: list[dict] = []
 
-def actualizar_precio(indice, precio):
-  '''Actualiza el precio del producto con el índice dado'''
-  raise NotImplementedError
+def insertar(nombre: str, precio: float | int, categoria: str, etiquetas: list[str]=[], prioridad: int=3):
+    '''Añade un producto nuevo a la lista con los parámetros dados'''
+    raise NotImplementedError
 
-def cambiar_estado(indice):
-  '''Cambia el estado del producto con el índice dado entre comprado o no'''
-  raise NotImplementedError
+def borrar(indice: int):
+    '''Borra de la lista el producto que se encuentra en la posición indicada'''
+    raise NotImplementedError
 
-def listar_productos():
-  '''Devuelve la lista de los productos'''
-  raise NotImplementedError
+def actualizar_precio(indice: int, precio: float):
+    '''Actualiza el precio del producto con el índice dado'''
+    raise NotImplementedError
 
-def mostrar_productos(comprados=True, etiquetas=(), categorias=[]):
-  '''
-  Muestra por pantalla todos los productos con su información. Si un producto ya ha sido comprado, se marca con una x al comienzo.
-  La prioridad se indicará mediante el uso de asteriscos (*), es decir, un artículo con prioridad 5 se representará mediante cinco asteriscos (*****).
-  Si comprados es False, no se muestran los productos ya comprados.
-  etiquetas es una tupla o lista con etiquetas o aclaraciones.
-  Si está vacía, se muestran todos los productos. Si contiene alguna etiqueta, sólo se muestran los productos que tengan todas las etiquetas proporcionadas.
-   Categorias es una lista con las categorías que se quieren obtener. Si está vacía, se muestran todos los productos. Si contiene alguna categoría, solo se muestran los productos cuya categoría esté contenida en la lista.
+def cambiar_estado(indice: int):
+    '''Cambia el estado del producto con el índice dado entre comprado o no'''
+    raise NotImplementedError
 
-  Ejemplo en que sólo un producto ha sido comprado:
-  >>> mostrar_productos()
-  [x] Alimentación - Arroz integral - *** - 0.72 € - #risotto #arroz a la cubana
-  [ ] Alimentación - Huevos - * - 1.20 € - #arroz a la cubana #tortilla 
-  [ ] Cosméticos - Desmaquillante - ***** - 4.50 € - #fiesta #teatro
+def mostrar_productos(comprados: bool=True, etiquetas: list[str]=[], categorias: list[str]=[]):
+    '''
+    Muestra por pantalla todos los productos con su información. Si un producto ya ha sido comprado, se marca con una x al comienzo.
+    La prioridad se indicará mediante el uso de asteriscos (*), es decir, un artículo con prioridad 5 se representará mediante cinco asteriscos (*****).
+    Si comprados es False, no se muestran los productos ya comprados.
+    etiquetas es una tupla o lista con etiquetas o aclaraciones.
+    Si está vacía, se muestran todos los productos. Si contiene alguna etiqueta, sólo se muestran los productos que tengan todas las etiquetas proporcionadas.
+     Categorias es una lista con las categorías que se quieren obtener. Si está vacía, se muestran todos los productos. Si contiene alguna categoría, solo se muestran los productos cuya categoría esté contenida en la lista.
 
-  >>> mostrar_productos(etiquetas=('arroz a la cubana'))
-  [x] Alimentación - Arroz integral - *** - 0.72 € - #risotto #arroz a la cubana
-  [ ] Alimentación - Huevos - * - 1.20 € - #arroz a la cubana #tortilla
-  '''
-raise NotImplementedError
+    Ejemplo en que sólo un producto ha sido comprado:
+    >>> mostrar_productos()
+    [x] Alimentación - Arroz integral - *** - 0.72 € - #risotto #arroz a la cubana
+    [ ] Alimentación - Huevos - * - 1.20 € - #arroz a la cubana #tortilla 
+    [ ] Cosméticos - Desmaquillante - ***** - 4.50 € - #fiesta #teatro
+
+    >>> mostrar_productos(etiquetas=('arroz a la cubana'))
+    [x] Alimentación - Arroz integral - *** - 0.72 € - #risotto #arroz a la cubana
+    [ ] Alimentación - Huevos - * - 1.20 € - #arroz a la cubana #tortilla
+    '''
+    raise NotImplementedError
 ```
 
 En cada uno de estos casos, habrá que sustituir la lı́nea `raise NotImplementedError` por el código necesario para cumplir la funcionalidad.
 
 _**Nota:** en temas posteriores, veremos formas más eficientes de representar información mediante la definición de clases. Otra opción para representar tareas podría ser utilizar una tupla especial con nombres para cada posición (namedtuple <sup>[1](#namedtuple)</sup>)_
 
+
+Para evitar tener que escribir excesivamente comprobar el funcionamiento de esta función, se recomienda crear una función de prueba, como por ejemplo:
+
+<img src="./img/python.png" align=right width=100px>
+
+```python
+
+def prueba_1():
+    print('-- Debería estar vacía')
+    mostrar_productos()
+    insertar('Garganzos', 0.68, 'Alimentación', ['cocido', 'humus'], 3)
+    insertar('Hierbabuena', 1.5, 'Alimentación', ['coctainls'], 1)
+    print('-- Debería mostrar Garganzos y hierbabuena')
+    mostrar_productos()
+    cambiar_estado(1)
+    print('-- Debería mostrar Garbanzos como comprados')
+    mostrar_productos()
+    borrar(0)
+    print('-- Debería mostrar sólo Hierbabuena')
+    mostrar_productos()
+```
+
 ### 2. Ordenación de la lista de la compra
 
 Cuando la lista de la compra es grande, es interesante que se muestren en un orden especı́fico, y no sólo por orden de inserción.
 Para ello, vamos a utilizar un algoritmo de ordenación conocido como Insertion Sort<sup>[2](#insertion_sort)</sup>, que comparará la prioridad de cada artículo y los colocará en el orden adecuado.
-El criterio de ordenación será el siguiente: una producto ha de aparecer antes que otro si su prioridad es mayor, o si el primer producto no ha sido comprado y el segundo sí.
+El criterio de ordenación será el siguiente: un producto ha de aparecer antes que otro si su prioridad es **mayor**, o si el primer producto no ha sido comprado y el segundo sí.
 
 El funcionamiento de Insertion Sort es muy sencillo: consiste en ir cogiendo uno por uno los elementos de una lista y moverlos a su posición correspondiente con respecto a los anteriormente ordenados.
 Así, empieza con el segundo elemento y lo ordena con respecto al primero.
@@ -216,14 +239,35 @@ Luego sigue con el tercero y lo coloca en su posición ordenada con respecto a l
 
 ```python
 def ordenar():
-  '''Ordena la lista de productos en función de su prioridad, y de si han sido ya comprados o no.'''
-  raise NotImplementedError
+    '''Ordena la lista de productos en función de su prioridad, y de si han sido ya comprados o no.'''
+    raise NotImplementedError
+```
+
+Para probar este apartado, podemos de nuevo hacer una función específica:
+
+<img src="./img/python.png" align=right width=100px>
+
+```python
+
+def prueba_2():
+    productos.clear()
+    insertar('Hierbabuena', 1.5, 'Alimentación', ['coctainls'], 1)
+    insertar('Garganzos', 0.68, 'Alimentación', ['cocido', 'humus'], 3)
+    print('-- Debería mostrar hierbabuena antes que garbanzos, porque se insertó antes')
+    mostrar_productos()
+  
+    ordenar()
+    print('-- Debería mostrar Garganzos antes, porque tiene prioridad mayor')
+    mostrar_productos()
+    cambiar_estado(0)
+    print('-- Debería mostrar Hierbabuena antes, porque no está comprada')
+    mostrar_productos()
 ```
 
 ### 3. Menú de selección
 
-En la práctica anterior creamos un menú interactivo utilizando varias sentencias de control.
-En esta práctica, simplificaremos esta implementación mediante un diccionario.
+En el proyecto anterior creamos un menú interactivo utilizando varias sentencias de control.
+En este proyecto, simplificaremos esta implementación mediante un diccionario.
 Esto nos permitirá además añadir fácilmente una función de ayuda, que mostrará todos los comandos disponibles y la documentación de la función python que se usa en el comando.
 En particular, implementaremos los siguientes comandos:
 
@@ -254,7 +298,7 @@ Para implementar este menú, usaremos un diccionario de comandos a funciones, co
 
 Cada vez que el usuario lance un comando, el menú comprobará si hay una acción definida y, de ser ası́, la lanzará con los argumentos proporcionados.
 En caso de insertar un comando no reconocido, el menú mostrará un texto de ayuda, que incluirá todas las acciones definidas junto con su documentación.
-La documentación de una función se puede obtener de la siguiente manera:
+La documentación de una función (p.e., `mostrar_productos`) se puede obtener de la siguiente manera:
 
 <img src="./img/python-repl-vertical.png" align=right width=100px>
 
@@ -300,6 +344,7 @@ _**Nota:**: Los argumentos de los comandos son cadenas de texto.
 En algunos de los comandos (insertar, comprado o actualizar), será necesario convertirlos a enteros, float o tupla.
 La forma más fácil de pasar a formato numérico en nuestro caso es utilizar `numero = int(numero)` o `numero = float(numero)` dentro de la función que corresponda.
 En el caso de las tuplas, lo que haremos será detectar si la entrada es una cadena de texto, y en ese caso separaremos por comas.
+
 
 ### 4. Tareas opcionales
 
@@ -366,11 +411,11 @@ Ran 7 tests in 0.001s
 FAILED (failures=2)
 ```
 
-## Entrega de la práctica
+## Entrega del proyecto 
 
 
-Para entregar la práctica, se deberá subir a Moodle en la tarea llamada "Entrega del proyecto 2" el fichero `listadelacompra.py`.
-Este fichero debe contener todas las funciones requeridas en la práctica.
+Para entregar el proyecto, se deberá subir a Moodle en la tarea llamada "Entrega del proyecto 2" el fichero `listadelacompra.py`.
+Este fichero debe contener todas las funciones requeridas en el enunciado.
 </br>
 
 ## Enlaces

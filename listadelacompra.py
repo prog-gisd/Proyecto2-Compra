@@ -20,28 +20,29 @@ En lecciones posteriores veremos cómo transformar esto en una estructura más e
 
 productos = []
 
+
 def insertar(nombre, precio, categoria, etiquetas=(), prioridad=3):
-  '''Añade un producto nuevo a la lista con los parámetros dados'''
-  raise NotImplementedError
+    '''Añade un producto nuevo a la lista con los parámetros dados'''
+    raise NotImplementedError
+
 
 def borrar(indice):
-  '''Borra de la lista el producto que se encuentra en la posición indicada'''
-  raise NotImplementedError
+    '''Borra de la lista el producto que se encuentra en la posición indicada'''
+    raise NotImplementedError
+
 
 def actualizar_precio(indice, precio):
-  '''Actualiza el precio del producto con el índice dado'''
-  raise NotImplementedError
+    '''Actualiza el precio del producto con el índice dado'''
+    raise NotImplementedError
+
 
 def cambiar_estado(indice):
-  '''Cambia el estado del producto con el índice dado entre comprado o no'''
-  raise NotImplementedError
+    '''Cambia el estado del producto con el índice dado entre comprado o no'''
+    raise NotImplementedError
 
-def listar_productos():
-  '''Devuelve la lista de los productos'''
-  raise NotImplementedError
 
 def mostrar_productos(comprados=True, etiquetas=(), categorias=[]):
-  '''
+    '''
   Muestra por pantalla todos los productos con su información. Si un producto ya ha sido comprado, se marca con una x al comienzo.
   La prioridad se indicará mediante el uso de asteriscos (*), es decir, un artículo con prioridad 5 se representará mediante cinco asteriscos (*****).
   Si comprados es False, no se muestran los productos ya comprados.
@@ -61,7 +62,8 @@ def mostrar_productos(comprados=True, etiquetas=(), categorias=[]):
   [x] Alimentación - Arroz integral - *** - 0.72 € - #risotto #arrozalacubana
   [ ] Alimentación - Huevos - * - 1.20 € - #arrozalacubana #tortilla
   '''
-  raise NotImplementedError
+    raise NotImplementedError
+
 
 def menu():
     '''
@@ -93,6 +95,7 @@ def menu():
     '''
     raise NotImplementedError
 
+
 def ordenar():
     '''
     Se ordena la lista de productos, poniendo aquellos con mayor prioridad al principio.
@@ -103,9 +106,9 @@ def ordenar():
 
 def prueba_manual():
     print('Insertando 3 productos')
-    insertar('Desmaquillante', 4.5, ('fiesta', 'teatro'), 'Cosméticos', 5)
-    insertar('Garbanzos', 0.68, ('cocido', 'hummus'), 'Alimentación', 3)
-    insertar('Hierbabuena', 1.5, ('cocktails', 'postres'), 'Alimentación', 1)
+    insertar('Desmaquillante', 4.5, 'Cosméticos', ('fiesta', 'teatro'), 5)
+    insertar('Garbanzos', 0.68, 'Alimentación', ('cocido', 'hummus'), 3)
+    insertar('Hierbabuena', 1.5, 'Alimentación', ('cocktails', 'postres'), 1)
 
     seccion('Lista de la compra sin ordenar ni formatear')
 
@@ -116,12 +119,11 @@ def prueba_manual():
     cambiar_estado(0)
     print(productos)
 
-
     seccion('Lista de la compra sin ordenar')
     mostrar_productos()
 
     seccion('Lista de la compra filtradas')
-    mostrar_productos(etiquetas=('cocido',))
+    mostrar_productos(etiquetas=('cocido', ))
 
     seccion('Lista de la compra ordenadas')
     ordenar()
@@ -130,7 +132,7 @@ def prueba_manual():
 
 def seccion(texto):
     print()
-    print('-'*10, texto, '-'*40)
+    print('-' * 10, texto, '-' * 40)
     print()
 
 
