@@ -343,7 +343,7 @@ Por lo tanto, algunos posibles ejemplos del uso de este menú serían:
 _**Nota:**: Los argumentos de los comandos son cadenas de texto.
 En algunos de los comandos (insertar, comprado o actualizar), será necesario convertirlos a enteros, float o tupla.
 La forma más fácil de pasar a formato numérico en nuestro caso es utilizar `numero = int(numero)` o `numero = float(numero)` dentro de la función que corresponda.
-En el caso de las tuplas, lo que haremos será detectar si la entrada es una cadena de texto, y en ese caso separaremos por comas.
+En el caso de las tuplas, lo que haremos será detectar si la entrada es una cadena de texto, y en ese caso separaremos por comas._
 
 
 ### 4. Tareas opcionales
