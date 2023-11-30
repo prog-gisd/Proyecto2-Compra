@@ -69,11 +69,11 @@ class TestProductos(unittest.TestCase):
         assert productos[0]["nombre"] == 'Desmaquillante'
         assert productos[1]["nombre"] == 'Arroz integral'
         assert productos[2]["nombre"] == 'Huevos'
-        cambiar_estado(2)
+        cambiar_estado(0)
         ordenar()
-        assert productos[1]["nombre"] == 'Desmaquillante'
-        assert productos[2]["nombre"] == 'Arroz integral'
-        assert productos[0]["nombre"] == 'Huevos'
+        assert productos[0]["nombre"] == 'Arroz integral'
+        assert productos[1]["nombre"] == 'Huevos'
+        assert productos[2]["nombre"] == 'Desmaquillante'
 
     def test_mostrar(self):
         insertar('Arroz integral', 0.72, 'Alimentación', ('risotto', 'arroz a la cubana'))
