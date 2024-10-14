@@ -350,9 +350,9 @@ En el caso de las tuplas, lo que haremos será detectar si la entrada es una cad
 ### 4. Refactorización del código
 Ahora, vamos a llevar a cabo una refactorización del código con el objetivo de hacerlo más claro y eficiente. Para ello, modificaremos nuestro script para crear dos clases (``ListaCompra`` y ``Producto``) que agruparán las funciones desarrolladas anteriormente. 
 
-La clase ``Producto`` ha de tener un constructor que reciba todos los parámetros necesarios para la creación de un producto (``nombre``, ``precio``, ``categorías``, ``etiquetas``, ``prioridad``, y ``comprado``), y los inicialice como atributos.
+La clase ``Producto`` ha de tener un constructor que reciba todos los parámetros necesarios para la creación de un producto (``nombre``, ``precio``, ``categorias``, ``etiquetas``, ``prioridad``, y ``comprado``), y los inicialice como atributos.
 
-La clase ``ListaCompra`` debe contener un constructor que inicialice su único atributo: ``productos`` (una lista de objetos de la clase ``Producto``). Además, debe contener todos los métodos necesarios para realizar las operaciones de ``insertar``, ``borrar``, ``actualizar_precio``, ``cambiar_estado`` y ``mostrar_productos``.
+La clase ``ListaCompra`` debe contener un constructor que inicialice su único atributo: ``productos`` (una lista de objetos de la clase ``Producto``). Además, debe contener todos los métodos necesarios para realizar las operaciones: ``insertar``, ``borrar``, ``actualizar_precio``, ``ordenar``,  ``cambiar_estado`` y ``mostrar_productos``.
 
 ### 5. Tareas opcionales
 
