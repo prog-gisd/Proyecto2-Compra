@@ -7,20 +7,23 @@
 
 ## Contenido
 
-- [Requisitos previos](#requisitos-previos)
-- [Temas relacionados con el proyecto](#temas-relacionados-con-el-proyecto)
-- [Convenciones](#convenciones)
-- [Objetivos](#objetivos)
-- [Introducción](#introducción)
-- [Actividades del proyecto](#actividades-del-proyecto)
-  - [0: Descargar el proyecto y probar las funcionalidades](#0-descargar-el-proyecto-y-probar-las-funcionalidades)
-  - [1. Lista de la compra](#1-lista-de-la-compra)
-  - [2. Ordenación de la lista de la compra](#2-ordenación-de-la-lista-de-la-compra)
-  - [3. Menú de selección](#3-menú-de-selección)
-  - [4. Tareas opcionales](#4-tareas-opcionales)
-- [Evaluación](#evaluación)
-- [Entrega del proyecto](#entrega-del-proyecto)
-- [Enlaces](#enlaces)
+- [Proyecto 2 - Lista de la compra](#proyecto-2---lista-de-la-compra)
+  - [Contenido](#contenido)
+  - [Requisitos previos](#requisitos-previos)
+  - [Temas relacionados con el proyecto](#temas-relacionados-con-el-proyecto)
+  - [Convenciones](#convenciones)
+  - [Objetivos](#objetivos)
+  - [Introducción](#introducción)
+  - [Actividades del proyecto](#actividades-del-proyecto)
+    - [0: Descargar el proyecto y probar las funcionalidades](#0-descargar-el-proyecto-y-probar-las-funcionalidades)
+    - [1. Lista de la compra](#1-lista-de-la-compra)
+    - [2. Ordenación de la lista de la compra](#2-ordenación-de-la-lista-de-la-compra)
+    - [3. Menú de selección](#3-menú-de-selección)
+    - [4. Refactorización del código](#4-refactorización-del-código)
+    - [5. Tareas opcionales](#5-tareas-opcionales)
+  - [Evaluación](#evaluación)
+  - [Entrega del proyecto](#entrega-del-proyecto)
+  - [Enlaces](#enlaces)
 
 ## Requisitos previos
 
@@ -344,7 +347,14 @@ La forma más fácil de pasar a formato numérico en nuestro caso es utilizar `n
 En el caso de las tuplas, lo que haremos será detectar si la entrada es una cadena de texto, y en ese caso separaremos por comas._
 
 
-### 4. Tareas opcionales
+### 4. Refactorización del código
+Ahora, vamos a llevar a cabo una refactorización del código con el objetivo de hacerlo más claro y eficiente. Para ello, modificaremos nuestro script para crear dos clases (``ListaCompra`` y ``Producto``) que agruparán las funciones desarrolladas anteriormente. 
+
+La clase ``Producto`` ha de tener un constructor que reciba todos los parámetros necesarios para la creación de un producto (``nombre``, ``precio``, ``categorías``, ``etiquetas``, ``prioridad``, y ``comprado``), y los inicialice como atributos.
+
+La clase ``ListaCompra`` debe contener un constructor que inicialice su único atributo: ``productos`` (una lista de objetos de la clase ``Producto``). Además, debe contener todos los métodos necesarios para realizar las operaciones de ``insertar``, ``borrar``, ``actualizar_precio``, ``cambiar_estado`` y ``mostrar_productos``.
+
+### 5. Tareas opcionales
 
 Como hemos dicho, hemos realizado una gestión muy básica de la lista de la compra. Por ello, se propone realizar
 libremente las siguientes tareas para mejorar en el manejo de Python y obtener una gestión de lista de la compra más
