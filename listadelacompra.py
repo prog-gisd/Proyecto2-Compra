@@ -15,7 +15,7 @@ producto = {
   "comprado": False
 }
 
-En lecciones posteriores veremos cómo transformar esto en una estructura más elegante.
+En la parte 4 de está práctica veremos cómo transformar esto en una estructura más elegante.
 '''
 
 productos = []

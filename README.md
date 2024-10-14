@@ -348,11 +348,11 @@ En el caso de las tuplas, lo que haremos será detectar si la entrada es una cad
 
 
 ### 4. Refactorización del código
-Ahora, vamos a llevar a cabo una refactorización del código con el objetivo de hacerlo más claro y eficiente. Para ello, modificaremos nuestro script para crear dos clases (``ListaCompra`` y ``Producto``) que agruparán las funciones desarrolladas anteriormente. 
+Ahora, vamos a llevar a cabo una refactorización del código con el objetivo de hacerlo más claro y eficiente. Para ello, crearemos un nuevo fichero ``listadelacompra_clases.py`` en el que crearemos dos clases (``ListaCompra`` y ``Producto``) que agruparán las funciones desarrolladas anteriormente. 
 
-La clase ``Producto`` ha de tener un constructor que reciba todos los parámetros necesarios para la creación de un producto (``nombre``, ``precio``, ``categorias``, ``etiquetas``, ``prioridad``, y ``comprado``), y los inicialice como atributos.
+La clase ``Producto`` ha de tener un constructor que reciba todos los parámetros necesarios para la creación de un producto (``nombre``, ``precio``, ``categorias``, ``etiquetas``, ``prioridad``), y los inicialice como atributos. Además, debe inicializar el atributo ``comprado``.
 
-La clase ``ListaCompra`` debe contener un constructor que inicialice su único atributo: ``productos`` (una lista de objetos de la clase ``Producto``). Además, debe contener todos los métodos necesarios para realizar las operaciones: ``insertar``, ``borrar``, ``actualizar_precio``, ``ordenar``,  ``cambiar_estado`` y ``mostrar_productos``.
+La clase ``ListaCompra`` debe contener un constructor que inicialice su único atributo: ``productos`` (una lista de objetos de la clase ``Producto``). Además, debe contener todos los métodos necesarios para realizar las operaciones: ``insertar``, ``borrar``, ``actualizar_precio``, ``ordenar``,  ``cambiar_estado`` y ``mostrar_productos``, con sus respectivos parámetros.
 
 ### 5. Tareas opcionales
 
@@ -374,8 +374,8 @@ Se propone modificar el código para eliminar la variable `productos` y que toda
 
 ## Evaluación
 
-En esta tarea se incluye un fichero de pruebas llamado `test.py`.
-Su uso es opcional, pero muy recomendado, ya que permite comprobar de una manera estructurada si las funcionalidades pedidas se han implementado. Para que las pruebas se ejecuten correctamente, el fichero de la solución debe tener el nombre `listadelacompra.py` y estar alojado en la misma carpeta que el fichero de pruebas `test.py`.
+En esta tarea se incluyen dos ficheros de pruebas llamados `test.py` y `test_clases.py`.
+Su uso es opcional, pero muy recomendado, ya que permite comprobar de una manera estructurada si las funcionalidades pedidas se han implementado. Para que las pruebas se ejecuten correctamente, los ficheros de la solución deben tener el nombre `listadelacompra.py`  y `listadelacompra_clases.py`, y estar alojados en la misma carpeta que los ficheros de pruebas `test.py` y `test_clases.py`.
 
 Los tests pueden lanzarse en cualquier momento en la línea de comando.
 Si todo está bien implementado, debería obtenerse un resultado parecido a este:
@@ -422,8 +422,8 @@ FAILED (failures=2)
 ## Entrega del proyecto 
 
 
-Para entregar el proyecto, se deberá subir a Moodle en la tarea llamada "Entrega del proyecto 2" el fichero `listadelacompra.py`.
-Este fichero debe contener todas las funciones requeridas en el enunciado.
+Para entregar el proyecto, se deberá subir a Moodle en la tarea llamada "Entrega del proyecto 2" los ficheros `listadelacompra.py` y `listadelacompra_clases.py`.
+Estos ficheros debe contener todas las funciones requeridas en el enunciado.
 </br>
 
 ## Enlaces
