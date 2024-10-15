@@ -350,9 +350,13 @@ En el caso de las tuplas, lo que haremos será detectar si la entrada es una cad
 ### 4. Refactorización del código
 Ahora, vamos a llevar a cabo una refactorización del código con el objetivo de hacerlo más claro y eficiente. Para ello, crearemos un nuevo fichero ``listadelacompra_clases.py`` en el que crearemos dos clases (``ListaCompra`` y ``Producto``) que agruparán las funciones desarrolladas anteriormente. 
 
-La clase ``Producto`` ha de tener un constructor que reciba todos los parámetros necesarios para la creación de un producto (``nombre``, ``precio``, ``categorias``, ``etiquetas``, ``prioridad``), y los inicialice como atributos. Además, debe inicializar el atributo ``comprado``.
+La clase ``Producto`` ha de tener un constructor que reciba todos los parámetros necesarios para la creación de un producto (``nombre``, ``precio``, ``categorias``, ``etiquetas``, ``prioridad``), y los inicialice como atributos. Considere qué puede haber parámetros opcionales, decida cuáles podrían ser y qué valor por defecto deberían tener. Además, debe inicializar el atributo ``comprado`` a False.
 
 La clase ``ListaCompra`` debe contener un constructor que inicialice su único atributo: ``productos`` (una lista de objetos de la clase ``Producto``). Además, debe contener todos los métodos necesarios para realizar las operaciones: ``insertar``, ``borrar``, ``actualizar_precio``, ``ordenar``,  ``cambiar_estado`` y ``mostrar_productos``, con sus respectivos parámetros.
+
+Por último, el menú deberá operar con ambas clases en lugar de llamar directamente a las funciones desarrolladas en los puntos anteriores.
+
+Este último punto del proyecto 2 es **obligatorio** para considerar terminado el proyecto 2. Es decir, que es necesario para su evaluación en el examen práctico. En otras palabras, aunque se realice la primera parte (sin clases) en el fichero ``listadelacompra.py``; se debe completar este úlitmo punto y desarrollar también la versión usando las clases ``ListaCompra`` y ``Producto`` en el fichero ``listadelacompra_clases.py``.
 
 ### 5. Tareas opcionales
 
@@ -361,9 +365,7 @@ libremente las siguientes tareas para mejorar en el manejo de Python y obtener u
 útil:
 
 - Permitir varias listas de la compra.
-Todo el código realizado depende de la variable `productos` en el módulo.
-Esta es una mala práctica con varias desventajas, pero la principal es que no nos permite tener más de una lista de productos.
-Se propone modificar el código para eliminar la variable `productos` y que todas las funciones reciban la lista de productos como argumento.
+  Con la clase ``ListaCompra`` puede crear tantos objetos como listas de la compra necesite (para diferentes supermercados o diferentes temáticas). Por lo que puede hacer que el menú permita la creación y el uso de diferentes listas.
 - Modificar el menú para que los argumentos se pidan uno a uno de manera interactiva, en lugar de escribirlos con separadores en la misma lı́nea.
  - Mostrar el ı́ndice de cada producto. Borrar o cambiar un producto requiere saber el ı́ndice del producto en la lista.
  Serı́a útil que se mostrara el ı́ndice de cada producto junto con el resto de información.
